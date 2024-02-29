@@ -25,7 +25,7 @@ public class InterfaceBuscaminas {
 
 
        while (!juego.isJuegoTerminado()) {
-           juego.mostrarTablero();
+           mostrarTablero( juego.getTableroDestapado(), juego.getTableroNum() );
            int fila = obtenerEntrada("Fila: ");
            int columna = obtenerEntrada("Columna: ");
            juego.destaparCasilla(fila, columna);
@@ -56,6 +56,32 @@ public class InterfaceBuscaminas {
        InterfaceBuscaminas buscaminas = new InterfaceBuscaminas(10, 10, 10);
        buscaminas.jugar();
    }
+
+   public void mostrarTablero( boolean[][]tableroDestapado, int[][]tableroNum ) {
+    int[][] tableroMostrado = new int  [tableroDestapado.length][tableroDestapado[0].length];
+    int filas = tableroDestapado.length;
+    int columnas = tableroDestapado[0].length;
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            if (tableroDestapado[i][j]) {
+                tableroMostrado[i][j] = tableroNum[i][j];
+            } else {
+                tableroMostrado[i][j] = -1; // Representa una casilla tapada
+            }
+        }
+    }
+    // Mostrar el tablero
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            if (tableroMostrado[i][j] == -1) {
+                System.out.print("- ");
+            } else {
+                System.out.print(tableroMostrado[i][j] + " ");
+            }
+        }
+        System.out.println();
+    }
+}
 }
 
 

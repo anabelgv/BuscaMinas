@@ -124,29 +124,11 @@ public class Buscaminas {
         return juegoGanado;
     }
 
-
-    public void mostrarTablero() {
-        int[][] tableroMostrado = new int[filas][columnas];
-        for (int i = 0; i < filas; i++) {
-            for (int j = 0; j < columnas; j++) {
-                if (tableroDestapado[i][j]) {
-                    tableroMostrado[i][j] = tableroNum[i][j];
-                } else {
-                    tableroMostrado[i][j] = -1; // Representa una casilla tapada
-                }
-            }
-        }
-        // Mostrar el tablero
-        for (int i = 0; i < filas; i++) {
-            for (int j = 0; j < columnas; j++) {
-                if (tableroMostrado[i][j] == -1) {
-                    System.out.print("- ");
-                } else {
-                    System.out.print(tableroMostrado[i][j] + " ");
-                }
-            }
-            System.out.println();
-        }
+ public boolean[][] getTableroDestapado() {
+        return tableroDestapado;
+    }
+    public int[][] getTableroNum() {
+        return tableroNum;
     }
 }
 
